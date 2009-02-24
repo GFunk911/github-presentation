@@ -1,0 +1,131 @@
+h1. Distributed vs. Centralized
+
+Git is a distributed version control system (VCS).
+
+A VCS can be centralized or distributed
+
+*Centralized*
+There is only one repository.  Users check out a working copy from the repository to their machine.  
+Commits flow between the central repository and the user.
+Examples: Subversion, CVS
+
+*Distributed*
+There are many versions of the repository.  Users "clone" an existing repository onto their machine.  
+Commits can potentially flow between any user/repository.  
+The central repository is designated by convention.
+Examples: Git, Mercurial, Darcs, Bazaar
+
+h1. Benefits of Distributed - Obvious
+
+*The central repository is corrupted, or the server goes down.*
+* No Problem!
+* Everyone has a full copy of the repository on their machine, so the chances of losing anything are close to nonexistent.
+* Put a copy of the repository up on a new server (or have somebody act as the temporary central repository) and start using that.
+
+*I want to share a change on my machine with somebody else*
+* They can pull commits from my repository as easily as from any other
+* Great from sharing little tweaks, doing code reviews, etc.
+
+*Speed*
+* Since all repository operations are happening locally, many operations are much faster.
+* You can still interact with the repository when net access is poor or non-existent, such as on planes, trains and automobiles.  
+
+*Hierarchies of Repositories*
+You can setup a hierarchy of repositories.  This is how the Linux kernel works.
+* Each subsystem has someone responsible for it.
+* Individual committers send commits to him.  He reviews and accepts them into his repository.
+* Each subsystem maintainer periodically pushes their accepted commits up the chain.
+
+h1. Benefits of Distributed - Less Obvious
+
+These are great, but they don't seem worth switching.  How does this help on a day to day basis.
+
+*Working Copy on Steroids* - You have a working copy that has all the power of a repository.
+
+ADD MORE STUFF
+
+h1. Branching and Mergin
+
+Before we talk about the awesomeness of branching, we need to define what we're talking about, and how it works in SVN vs. Git
+
+Branching in SVN is a harsh Nebraska wind on a winter day.
+Branching in Git is a refreshing breeze in a dewey meadow.  
+
+To make a new branch in git, all you do is "git branch BRANCH_NAME START_POINT"
+* BRANCH_NAME - The name of your new branch
+* START_POINT - Where you want your branch to start from.  This can be trunk, another branch, or a specific commit.  
+
+To checkout a branch into your working copy, "git checkout BRANCH_NAME"
+
+To merge one branch into another, "git merge BRANCH_NAME"
+* Say I want to merge the green_widgets branch into trunk
+* "git checkout trunk" to checkout trunk
+* "git merge green_widgets" to merge the green_widgets commit into trunk
+* git is smart.  It knows when the green_widgets branch was created from trunk, and only merges in the commits that are not already in trunk.
+
+Say you want to merge a branch into trunk, but you want the whole branch to be a single commit in trunk.
+* "git merge green_widgets --squash" - turns all the branch commits into a single commit in trunk
+
+I created a branch from trunk a while ago, and I want to update it with all the trunk changes since it was created.
+* "git rebase trunk" - Move the branch to start from the HEAD of trunk.
+
+I just want a single commit from a branch, not the entire thing
+* "git cherry-pick COMMIT_ID"
+
+h1. A Common Scenario
+
+Say you are going to add new functionality to make green widgets, in addition to your existing white, tan, cream and beige colors.  You want to make a branch from the current trunk. 
+
+||Step||SVN||Git||
+|Create the branch|Open the repo browser<br>Create a copy of trunk into the branches/green_widgets directory<br>Hope you copied at the right level.|"git branch green_widgets trunk"|
+|Checkout the branch|Checkout the branch into a new directory<br>Get a cup of coffee and wait|"git checkout green_widgets"|
+|Make your changes|Type Type Type Type|Type Type Type Type|
+|Incrementally commit your work|Hope my unfinished changes don't break anything.  Ah forget it, I'll commit later.|Safely commit to your local repository at your pace|
+|Update with other people's changes|Update your WC<br>Fix any conflicts.  Hope you didn't break your uncommitted changes.|"git pull"<br>Fix any conflicts.  Your changes are safely committed locally and cannot be lost.|
+|Commit|svn commit|"git push"|
+|Update your branch with changes in trunk|*#$&$%*$()*% this is a PITA|"git rebase trunk"|
+|Merge your branch into trunk|Sigh...|"git merge green_widgets"|
+
+h1. Handle with Care
+
+Git also lets you do some really powerful things.  
+
+*Interactive Rebase* - "git rebase -i"
+This allows you to manipulate commits in various ways
+* Change commit messages
+* Combine multiple commits into one
+* Split a commit into multiple commits
+* Reorder commits
+* Delete a commit
+
+As previously demonstrated by table saws and BB guns, powerful things must be handled with care.  
+
+
+h1. SVN Integration
+
+Git can integrate with SVN through a tool called (strangely enough) Git-SVN.
+
+Git-SVN allows you to
+* Clone an SVN repository into git
+* Update the git repo with ongoing SVN commits
+* Push new git commits up to the SVN repository.
+
+This allows you to use a Git repository as a super-powered SVN WC, giving you most of the benefits of Git when you still have to interact with SVN
+
+h1. Github
+
+Stuff about the awesomeness of github
+
+h1. Quick Local Repo
+
+Stuff about how easy it is to create a local repo and start committing away
+
+h1. Ideas
+
+Designed to be great at branching and merging
+Classic use cases where distributed means what you think it means.
+Working Copy on steroids
+Speed due to local repo
+The index
+quick setup of local repo
+github
