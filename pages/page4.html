@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Branching and Mergin</title>
+    <link href='../base.css' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <a href='page3.html'>Prev</a>
+    <a href='page5.html'>Next</a>
+    <br />
+    <h1>Branching and Mergin</h1>
+    <p>Before we talk about the awesomeness of branching, we need to define what we&#8217;re talking about, and how it works in <span class="caps">SVN</span> vs. Git</p>
+    <p>Branching in <span class="caps">SVN</span> is a harsh Nebraska wind on a winter day.<br />
+    Branching in Git is a refreshing breeze in a dewey meadow.</p>
+    <p>To make a new branch in git, all you do is <span class="git-cmd">&#8220;git branch BRANCH_NAME START_POINT&#8221;</span></p>
+    <ul>
+    	<li>BRANCH_NAME &#8211; The name of your new branch</li>
+    	<li>START_POINT &#8211; Where you want your branch to start from.  This can be trunk, another branch, or a specific commit.</li>
+    </ul>
+    <p>To checkout a branch into your working copy, <span class="git-cmd">&#8220;git checkout BRANCH_NAME&#8221;</span></p>
+    <p>To merge one branch into another, <span class="git-cmd">&#8220;git merge BRANCH_NAME&#8221;</span></p>
+    <ul>
+    	<li>Say I want to merge the green_widgets branch into trunk</li>
+    	<li><span class="git-cmd">&#8220;git checkout trunk&#8221;</span> to checkout trunk</li>
+    	<li><span class="git-cmd">&#8220;git merge green_widgets&#8221;</span> to merge the green_widgets commit into trunk</li>
+    	<li>git is smart.  It knows when the green_widgets branch was created from trunk, and only merges in the commits that are not already in trunk.</li>
+    </ul>
+    <p>Say you want to merge a branch into trunk, but you want the whole branch to be a single commit in trunk.</p>
+    <ul>
+    	<li><span class="git-cmd">&#8220;git merge green_widgets &#8212;squash&#8221;</span> &#8211; turns all the branch commits into a single commit in trunk</li>
+    </ul>
+    <p>I created a branch from trunk a while ago, and I want to update it with all the trunk changes since it was created.</p>
+    <ul>
+    	<li><span class="git-cmd">&#8220;git rebase trunk&#8221;</span> &#8211; Move the branch to start from the <span class="caps">HEAD</span> of trunk.</li>
+    </ul>
+    <p>I just want a single commit from a branch, not the entire thing</p>
+    <ul>
+    	<li><span class="git-cmd">&#8220;git cherry-pick COMMIT_ID&#8221;</span></li>
+    </ul>
+  </body>
+</html>

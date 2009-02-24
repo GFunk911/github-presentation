@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Benefits of Distributed - Obvious</title>
+    <link href='../base.css' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <a href='page1.html'>Prev</a>
+    <a href='page3.html'>Next</a>
+    <br />
+    <h1>Benefits of Distributed &#8211; Obvious</h1>
+    <p><strong>The central repository is corrupted, or the server goes down.</strong></p>
+    <ul>
+    	<li>No Problem!</li>
+    	<li>Everyone has a full copy of the repository on their machine, so the chances of losing anything are close to nonexistent.</li>
+    	<li>Put a copy of the repository up on a new server (or have somebody act as the temporary central repository) and start using that.</li>
+    </ul>
+    <p><strong>I want to share a change on my machine with somebody else</strong></p>
+    <ul>
+    	<li>They can pull commits from my repository as easily as from any other</li>
+    	<li>Great from sharing little tweaks, doing code reviews, etc.</li>
+    </ul>
+    <p><strong>Speed</strong></p>
+    <ul>
+    	<li>Since all repository operations are happening locally, many operations are much faster.</li>
+    	<li>You can still interact with the repository when net access is poor or non-existent, such as on planes, trains and automobiles.</li>
+    </ul>
+    <p><strong>Hierarchies of Repositories</strong><br />
+    You can setup a hierarchy of repositories.  This is how the Linux kernel works.</p>
+    <ul>
+    	<li>Each subsystem has someone responsible for it.</li>
+    	<li>Individual committers send commits to him.  He reviews and accepts them into his repository.</li>
+    	<li>Each subsystem maintainer periodically pushes their accepted commits up the chain.</li>
+    </ul>
+  </body>
+</html>

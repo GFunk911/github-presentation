@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>A Common Scenario</title>
+    <link href='../base.css' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <a href='page4.html'>Prev</a>
+    <a href='page6.html'>Next</a>
+    <br />
+    <h1>A Common Scenario</h1>
+    <p>Say you are going to add new functionality to make green widgets, in addition to your existing white, tan, cream and beige colors.  You want to make a branch from the current trunk.</p>
+    <table>
+    	<tr>
+    		<th>Step</th>
+    		<th><span class="caps">SVN</span></th>
+    		<th>Git</th>
+    	</tr>
+    	<tr>
+    		<td>Create the branch</td>
+    		<td>Open the repo browser<br>Create a copy of trunk into the branches/green_widgets directory<br>Hope you copied at the right level.</td>
+    		<td><span class="git-cmd">&#8220;git branch green_widgets trunk&#8221;</span></td>
+    	</tr>
+    	<tr>
+    		<td>Checkout the branch</td>
+    		<td>Checkout the branch into a new directory<br>Get a cup of coffee and wait</td>
+    		<td><span class="git-cmd">&#8220;git checkout green_widgets&#8221;</span></td>
+    	</tr>
+    	<tr>
+    		<td>Make your changes</td>
+    		<td>Type Type Type Type</td>
+    		<td>Type Type Type Type</td>
+    	</tr>
+    	<tr>
+    		<td>Incrementally commit your work</td>
+    		<td>Hope my unfinished changes don&#8217;t break anything.  Ah forget it, I&#8217;ll commit later.</td>
+    		<td>Safely commit to your local repository at your pace</td>
+    	</tr>
+    	<tr>
+    		<td>Update with other people&#8217;s changes</td>
+    		<td>Update your WC<br>Fix any conflicts.  Hope you didn&#8217;t break your uncommitted changes.</td>
+    		<td><span class="git-cmd">&#8220;git pull&#8221;</span><br>Fix any conflicts.  Your changes are safely committed locally and cannot be lost.</td>
+    	</tr>
+    	<tr>
+    		<td>Commit</td>
+    		<td>svn commit</td>
+    		<td><span class="git-cmd">&#8220;git push&#8221;</span></td>
+    	</tr>
+    	<tr>
+    		<td>Update your branch with changes in trunk</td>
+    		<td><strong>#$&amp;$%</strong>$()*% this is a <span class="caps">PITA</span></td>
+    		<td><span class="git-cmd">&#8220;git rebase trunk&#8221;</span></td>
+    	</tr>
+    	<tr>
+    		<td>Merge your branch into trunk</td>
+    		<td>Sigh&#8230;</td>
+    		<td><span class="git-cmd">&#8220;git merge green_widgets&#8221;</span></td>
+    	</tr>
+    </table>
+  </body>
+</html>
