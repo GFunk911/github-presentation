@@ -34,6 +34,8 @@ class Page
   def write!
     File.create(filename,final_html)
     File.create(File.dirname(__FILE__) + "/empty/public/page#{page_num}.html",final_html)
+    FileUtils.cp "base.css",File.dirname(__FILE__) + "/empty/public"
+    FileUtils.cp "base.css",File.dirname(__FILE__) + "/pages"
     File.create(File.dirname(__FILE__) + "/pages/page#{page_num}.txt",text)
   end
   def first?
